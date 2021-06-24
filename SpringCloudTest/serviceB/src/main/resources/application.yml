@@ -1,0 +1,19 @@
+server:
+  port: 8081
+spring:
+  application:
+     name: serviceb
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+      datasource:
+        - nacos:
+            server-addr: 127.0.0.1:8848
+            data-id: ${spring.application.name}-sentinel
+            group-id: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
